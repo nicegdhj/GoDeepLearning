@@ -125,3 +125,4 @@ with tf.Session() as sess:
     print ("Optimization Finished!" )
     # 计算测试精度
     print ("Testing Accuracy:", sess.run(accuracy, feed_dict={x: mnist.test.images[:256], y: mnist.test.labels[:256], keep_prob: 1.}))
+    print("remove clone by ssh")
