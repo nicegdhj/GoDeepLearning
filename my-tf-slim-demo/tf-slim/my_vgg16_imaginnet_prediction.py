@@ -25,7 +25,7 @@ from preprocessing import vgg_preprocessing
 
 checkpoints_dir = '/home/nicehija/PycharmProjects/tf_slim_vgg16/checkpoints'
 print ('hello')
-photo_path1 = '/home/nicehija/PycharmProjects/tf_slim_vgg16/test_image/car.jpg'
+photo_path1 = '/home/nicehija/PycharmProjects/images_test/general/car.jpg'
 
 
 slim = tf.contrib.slim
