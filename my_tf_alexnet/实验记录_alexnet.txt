@@ -1,0 +1,65 @@
+log1
+无data augmentation
+无BN
+原始FC层
+SGD优化
+
+
+无法收敛
+
+log2
+无data augmentation
+无BN
+原始FC层
+SGD优化
+修改了one-hot
+
+#验证是不是one-hot的bug导致不收敛
+
+log3
+无data augmentation
+加入BN
+原始FC层
+SGD优化
+one-hot已修改
+
+log2的实验证明修正之后能够收敛,但是学习率好小设小了
+#在conv后面加入BN,与log2实验比对BN的威力
+
+log4
+加入data augmentation
+加入BN
+原始FC层
+adm优化
+one-hot已修改
+
+#本次使用adam, 学习率设为0.001,加入data augmentation,在cifar10上正式跑了一下
+
+lr= 0.001
+step = 70000
+val精度0.85， train精度0.94， loss曲线过拟合
+
+
+log5
+加入data augmentation
+加入BN
+原始FC层
+adm优化
+one-hot已修改
+val的数据不做数据增广
+
+#log4的基础上，inpputdata在train中做数据增广，而val不做，只有均一化（之前与train一样）
+lr= 0.001
+step = 30000
+val精度0.846(0.85不到)， train精度0.95左右， loss曲线过拟合
+
+######
+不记得是哪个log了， 好像覆盖了log5
+
+#查资料的时候发现 cifar10在ResNet是40-->crop到32再下采样到8，256crop到224是针对imageNet的
+log1~log4我的alexnet的cifar10都是crop到227
+#现在重新定义下采样尺度，针对cifar-10会提升精度吗？
+
+#原图32*32 数据增广不用crop 32-->8,然后，卷积核从32 64 到128，这样复杂度降低了，感觉又可以减少log5的过拟合
+与log5
+按记忆，最后的差别不大
